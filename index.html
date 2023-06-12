@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="crossorigin=""/>
+    <title>leflet js map</title>
+    <style>
+        #map{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div id="map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        //map inialization with cordinates and zoom lavel
+        var map = L.map('map').setView([23.684994, 90.356331],7.2);
+        //tilelayer define
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          //maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        //marker 
+        var locations = [
+               { lat: 22.52606090039902, lng: 90.2988173 },
+               { lat: 22.931975300386554, lng: 91.49677009999999},
+               { lat: 24.271176000314718, lng: 90.2161818},
+               { lat: 22.93720870038636,  lng: 89.2852741},
+               { lat: 24.461151100301006, lng: 88.68887029999999},
+               { lat: 25.833558000180908, lng: 88.9939966},
+               { lat: 24.493287400298616, lng: 91.7085743},
+            ];
+        locations.forEach(function(item){
+            var marker = L.marker([item.lat,item.lng],{
+            //draggable:true,    
+            })
+            .addTo(map)
+            .bindPopup('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><img src="th.jpg">',{
+            maxWidth:400,
+           });
+           
+        });    
+       
+        
+        
+       
+    </script>
+</body>
+</html>
